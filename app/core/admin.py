@@ -30,3 +30,8 @@ class UserAdmin(BaseUserAdmin):
             }
         ),
     )
+
+
+@admin.register(models.Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name', 'user']
