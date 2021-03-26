@@ -40,3 +40,8 @@ class TagAdmin(admin.ModelAdmin):
 @admin.register(models.Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
     list_display = ['name', 'user']
+
+
+@admin.register(models.Recipe)
+class IngredientAdmin(admin.ModelAdmin):
+    list_display = ['title', 'time_minutes', 'price', 'user', 'created_at']

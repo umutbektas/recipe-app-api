@@ -116,3 +116,62 @@ class Ingredient(models.Model):
         verbose_name = 'Ingredient'
         verbose_name_plural = 'Ingredients'
         ordering = ['-id']
+
+
+class Recipe(models.Model):
+    """Recipe object"""
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='user_recipes',
+        null=False,
+        blank=False,
+        verbose_name='Recipe User'
+    )
+    title = models.CharField(
+        null=False,
+        blank=False,
+        max_length=255,
+        verbose_name='Recipe Title'
+    )
+    time_minutes = models.PositiveSmallIntegerField(
+        null=False,
+        blank=False,
+        verbose_name='Recipe Minutes'
+    )
+    price = models.DecimalField(
+        null=False,
+        blank=False,
+        max_digits=9,
+        decimal_places=2,
+        verbose_name='Recipe Price'
+    )
+    link = models.CharField(
+        null=True,
+        blank=True,
+        max_length=255
+    )
+    ingredients = models.ManyToManyField(
+        Ingredient,
+        related_name='ingredients_recipes',
+        blank=False,
+        verbose_name='Recipe Ingredients'
+    )
+    tags = models.ManyToManyField(
+        Tag,
+        related_name='tags_recipes',
+        blank=False,
+        verbose_name='Recipe Tags'
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Recipe Date'
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Recipe'
+        verbose_name_plural = 'Recipes'
+        ordering = ['-created_at']
