@@ -43,5 +43,5 @@ class IngredientAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Recipe)
-class IngredientAdmin(admin.ModelAdmin):
+class RecipeAdmin(admin.ModelAdmin):
     list_display = ['title', 'time_minutes', 'price', 'user', 'created_at']
