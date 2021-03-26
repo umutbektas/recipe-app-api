@@ -35,3 +35,8 @@ class UserAdmin(BaseUserAdmin):
 @admin.register(models.Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = ['name', 'user']
+
+
+@admin.register(models.Ingredient)
+class IngredientAdmin(admin.ModelAdmin):
+    list_display = ['name', 'user']

@@ -92,3 +92,27 @@ class Tag(models.Model):
         verbose_name = 'Tag'
         verbose_name_plural = 'Tags'
         ordering = ['-name']
+
+
+class Ingredient(models.Model):
+    """Ingredient to be used in a recipe"""
+    name = models.CharField(
+        null=False,
+        blank=False,
+        max_length=255,
+        verbose_name='Ingredient Name'
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='user_ingredients',
+        verbose_name='Ingredient User'
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Ingredient'
+        verbose_name_plural = 'Ingredients'
+        ordering = ['-id']
