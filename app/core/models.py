@@ -163,13 +163,13 @@ class Recipe(models.Model):
     )
     ingredients = models.ManyToManyField(
         Ingredient,
-        related_name='ingredients_recipes',
+        related_name='recipes',
         blank=False,
         verbose_name='Recipe Ingredients'
     )
     tags = models.ManyToManyField(
         Tag,
-        related_name='tags_recipes',
+        related_name='recipes',
         blank=False,
         verbose_name='Recipe Tags'
     )
